@@ -18,6 +18,8 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+
+
 /**
  * Activity to demonstrate basic retrieval of the Google user's ID, email address, and basic
  * profile.
@@ -84,11 +86,20 @@ public class SignInActivity extends AppCompatActivity implements
 
         // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
-            // The Task returned from this call is always completed, no need to attach
-            // a listener.
+             // The Task returned from this call is always completed, no need to attach
+             // a listener.
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
             handleSignInResult(task);
         }
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+        if(account != null){
+            String message = account.getEmail();
+            Intent intent;
+            intent = new Intent(SignInActivity.this, LoginActivity.class);
+            intent.putExtra("email", message);
+            startActivity(intent);
+        }
+
     }
     // [END onActivityResult]
 
@@ -105,6 +116,8 @@ public class SignInActivity extends AppCompatActivity implements
             Log.w(TAG, "signInResult:failed code=" + e.getStatusCode());
             updateUI(null);
         }
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
+
     }
     // [END handleSignInResult]
 
@@ -112,6 +125,7 @@ public class SignInActivity extends AppCompatActivity implements
     private void signIn() {
         Intent signInIntent = mGoogleSignInClient.getSignInIntent();
         startActivityForResult(signInIntent, RC_SIGN_IN);
+        GoogleSignInAccount account = GoogleSignIn.getLastSignedInAccount(this);
     }
     // [END signIn]
 
@@ -149,6 +163,7 @@ public class SignInActivity extends AppCompatActivity implements
 
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
+
         } else {
             mStatusTextView.setText(R.string.signed_out);
 

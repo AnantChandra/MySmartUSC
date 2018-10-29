@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.google.samples.quickstart.signin" >
+    package="com.google.samples.quickstart.signin">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- To auto-complete the email text field in the login form with the user's emails -->
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
-
+        android:theme="@style/AppTheme">
         <activity
-            android:name="com.google.samples.quickstart.signin.ChooserActivity"
+            android:name=".ChooserActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,35 +23,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity
-            android:name="com.google.samples.quickstart.signin.SignInActivity"
+            android:name=".SignInActivity"
             android:label="@string/name_sign_in_activity"
-            android:theme="@style/ThemeOverlay.MyNoTitleActivity">
-        </activity>
+            android:theme="@style/ThemeOverlay.MyNoTitleActivity"></activity>
         <activity
-            android:name="com.google.samples.quickstart.signin.SignInActivityWithDrive"
+            android:name=".SignInActivityWithDrive"
             android:label="@string/name_sign_in_activity"
-            android:theme="@style/ThemeOverlay.MyNoTitleActivity">
-        </activity>
+            android:theme="@style/ThemeOverlay.MyNoTitleActivity"></activity>
         <activity
-            android:name="com.google.samples.quickstart.signin.IdTokenActivity"
+            android:name=".IdTokenActivity"
             android:label="@string/name_id_token_activity"
-            android:theme="@style/ThemeOverlay.MyNoTitleActivity">
-        </activity>
-
+            android:theme="@style/ThemeOverlay.MyNoTitleActivity"></activity>
         <activity
-            android:name="com.google.samples.quickstart.signin.ServerAuthCodeActivity"
+            android:name=".ServerAuthCodeActivity"
             android:label="@string/name_auth_code_activity"
-            android:theme="@style/ThemeOverlay.MyNoTitleActivity">
-        </activity>
-
+            android:theme="@style/ThemeOverlay.MyNoTitleActivity"></activity>
         <activity
-            android:name="com.google.samples.quickstart.signin.RestApiActivity"
+            android:name=".RestApiActivity"
             android:label="@string/name_rest_activity"
-            android:theme="@style/ThemeOverlay.MyNoTitleActivity">
-        </activity>
-
+            android:theme="@style/ThemeOverlay.MyNoTitleActivity"></activity>
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login"></activity>
     </application>
 
 </manifest>

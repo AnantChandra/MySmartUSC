@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+
 /**
  * Simple list-based Activity to redirect to one of the other Activities. The code here is
  * uninteresting, {@link SignInActivity} is a good place to start if you are curious about
