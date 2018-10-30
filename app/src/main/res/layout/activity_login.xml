@@ -70,7 +70,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+<<<<<<< HEAD
                 android:text="Grant Permission"
+=======
+                android:text="SIGN IN"
+>>>>>>> b7a7e13b0e9e016faf370f29e78b8c5f83565f0b
                 android:textStyle="bold" />
 
         </LinearLayout>
