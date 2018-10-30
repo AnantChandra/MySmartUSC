@@ -49,16 +49,9 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
-<<<<<<< HEAD
-    implementation files('/Users/anantchandra/AndroidStudioProjects/FinalProject/MySmartUSC/libs/activation.jar')
-    implementation files('/Users/anantchandra/AndroidStudioProjects/FinalProject/MySmartUSC/libs/additionnal.jar')
-    implementation files('/Users/anantchandra/AndroidStudioProjects/FinalProject/MySmartUSC/libs/mail.jar')
-    implementation files('/Users/anantchandra/AndroidStudioProjects/FinalProject/MySmartUSC/libs/jsoup-1.11.3.jar')
-=======
     implementation files('/Users/manipushpakgupta/Documents/Androidapps/my_smart_usc/libs/activation.jar')
     implementation files('/Users/manipushpakgupta/Documents/Androidapps/my_smart_usc/libs/additionnal.jar')
     implementation files('/Users/manipushpakgupta/Documents/Androidapps/my_smart_usc/libs/mail.jar')
     implementation files('/Users/manipushpakgupta/Documents/Androidapps/my_smart_usc/libs/jsoup-1.11.3.jar')
 >>>>>>> b7a7e13b0e9e016faf370f29e78b8c5f83565f0b
->>>>>>> 5140b3967a0f774864747826c468f834892c6ee9
 }

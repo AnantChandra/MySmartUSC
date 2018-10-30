@@ -66,6 +66,25 @@
         "various positions along the z-axis. On the web, shadows are depicted by manipulating the "
         "y-axis only. The following example shows the card with a height of 6dp.\n\n"
 
+<<<<<<< HEAD
+    <!-- TODO(user): replace with your real server client ID -->
+    <!-- Server Client ID.  This should be a valid Web OAuth 2.0 Client ID obtained
+         from https://console.developers.google.com/ -->
+    <string name="server_client_id">154845062452-tpo65arrsmk3bdqosukmmhogm764e1tu.apps.googleusercontent.com</string>
+    <string name="title_activity_login">Sign in</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+=======
         "Resting elevation.\n\n"
 
         "All material objects, regardless of size, have a resting elevation, or default elevation "
@@ -180,4 +199,5 @@
     <string name="pref_ringtone_silent">Silent</string>
 
     <string name="pref_title_vibrate">Vibrate</string>
+>>>>>>> b7a7e13b0e9e016faf370f29e78b8c5f83565f0b
 </resources>
