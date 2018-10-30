@@ -6,7 +6,7 @@ import javax.mail.MessagingException;
 import javax.mail.search.SearchTerm;
 
 public class FromFieldSearchTerm extends SearchTerm {
-    private String fromEmail;
+    public String fromEmail;
 
     public FromFieldSearchTerm(String fromEmail) {
         this.fromEmail = fromEmail;

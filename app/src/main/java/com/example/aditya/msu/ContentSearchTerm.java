@@ -9,7 +9,7 @@ import javax.mail.internet.MimeMultipart;
 import javax.mail.search.SearchTerm;
 
 public class ContentSearchTerm extends SearchTerm {
-    private String content;
+    public String content;
 
     public ContentSearchTerm(String content) {
         this.content = content;
@@ -42,7 +42,7 @@ public class ContentSearchTerm extends SearchTerm {
         return false;
     }
 
-    private String getTextFromMimeMultipart(
+    public static String getTextFromMimeMultipart(
             MimeMultipart mimeMultipart)  throws MessagingException, IOException{
         String result = "";
         int count = mimeMultipart.getCount();
