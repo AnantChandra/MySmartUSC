@@ -9,7 +9,7 @@ import javax.mail.internet.MimeMultipart;
 import javax.mail.search.SearchTerm;
 
 public class ContentSearchTerm extends SearchTerm {
-    private String content;
+    public String content;
 
     public ContentSearchTerm(String content) {
         this.content = content;

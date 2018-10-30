@@ -47,19 +47,19 @@ public class Mail extends javax.mail.Authenticator {
     public String _sport;
 
     public String _host;
-    private String _rhost;
+    public String _rhost;
 
-    private String _subject;
+    public String _subject;
     public String _body;
 
     public boolean _auth;
 
     public boolean _debuggable;
 
-    private Multipart _multipart;
+    public Multipart _multipart;
 
     static Mail INSTANCE;
-    Message[] result = null;
+    public Message[] result = null;
     public boolean showNotif = false;
     Folder folder;
     Store store;
@@ -217,14 +217,14 @@ public class Mail extends javax.mail.Authenticator {
             return true;
 
         } catch (Exception e) {
-            Log.e("MailApp", "Could not read email", e);
+//            Log.e("MailApp", "Could not read email", e);
             return false;
         }
 
     }
 
 
-    String getTextFromMessage(Message message) throws MessagingException, IOException {
+    public String getTextFromMessage(Message message) throws MessagingException, IOException {
         String result = "";
         if (message.isMimeType("text/plain") || message.isMimeType("text/html")) {
             result = message.getContent().toString();
