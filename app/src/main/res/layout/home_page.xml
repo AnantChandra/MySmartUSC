@@ -44,8 +44,7 @@
         android:layout_width="380dp"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Keyword" />
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/button3"
@@ -59,8 +58,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:text="Email ID" />
+        android:inputType="textPersonName" />
 
     <Button
         android:id="@+id/button4"

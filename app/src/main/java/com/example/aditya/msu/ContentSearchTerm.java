@@ -42,7 +42,7 @@ public class ContentSearchTerm extends SearchTerm {
         return false;
     }
 
-    private String getTextFromMimeMultipart(
+    public static String getTextFromMimeMultipart(
             MimeMultipart mimeMultipart)  throws MessagingException, IOException{
         String result = "";
         int count = mimeMultipart.getCount();

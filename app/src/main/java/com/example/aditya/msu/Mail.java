@@ -37,30 +37,30 @@ import javax.mail.internet.MimeMultipart;
 import static android.support.v4.content.ContextCompat.startActivity;
 
 public class Mail extends javax.mail.Authenticator {
-    private String _user;
-    private String _pass;
+    public String _user;
+    public String _pass;
 
-    private String[] _to;
-    private String _from;
+    public String[] _to;
+    public String _from;
 
-    private String _port;
-    private String _sport;
+    public String _port;
+    public String _sport;
 
-    private String _host;
+    public String _host;
     private String _rhost;
 
     private String _subject;
-    private String _body;
+    public String _body;
 
-    private boolean _auth;
+    public boolean _auth;
 
-    private boolean _debuggable;
+    public boolean _debuggable;
 
     private Multipart _multipart;
 
     static Mail INSTANCE;
     Message[] result = null;
-    private boolean showNotif = false;
+    public boolean showNotif = false;
     Folder folder;
     Store store;
     Session session2;
@@ -240,7 +240,7 @@ public class Mail extends javax.mail.Authenticator {
         return result;
     }
 
-    private String getTextFromMimeMultipart(
+    public String getTextFromMimeMultipart(
             MimeMultipart mimeMultipart)  throws MessagingException, IOException{
         String result = "";
         int count = mimeMultipart.getCount();
@@ -274,7 +274,7 @@ public class Mail extends javax.mail.Authenticator {
         return new javax.mail.PasswordAuthentication(_user, _pass);
     }
 
-    private Properties _setProperties() {
+    public Properties _setProperties() {
         Properties props = new Properties();
 
         props.put("mail.smtp.host", _host);
