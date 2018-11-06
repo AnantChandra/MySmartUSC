@@ -6,7 +6,11 @@ import android.util.Log;
 import android.widget.Toast;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Properties;
 import java.util.regex.Pattern;
 
@@ -64,6 +68,18 @@ public class Mail extends javax.mail.Authenticator {
     Folder folder;
     Store store;
     Session session2;
+
+
+    public static HashSet<String> hs = new HashSet<>();
+    public void setHs(HashSet<String> hs) {
+        this.hs = hs;
+    }
+
+    public static void setHsEmail(HashSet<String> hsEmail) {
+        Mail.hsEmail = hsEmail;
+    }
+
+    public static HashSet<String> hsEmail = new HashSet<>();
 
     public Mail() {
         INSTANCE = this;
@@ -202,8 +218,43 @@ public class Mail extends javax.mail.Authenticator {
             folder.open(Folder.READ_ONLY);//open folder only to read
             Message message[]=folder.getMessages();
             if(result != null) {
+
+                // hpa.priorityTerms.contains(message[message.length - 1])
+                //  && hpa.hs.contains(message[message.length - 1]
+                //Log.v("Content", getTextFromMessage(message[message.length - 1]));
+                // && priorityTerms.contains(getTextFromMessage(message[message.length - 1]))
+
+                //message[0].getFrom()
+                setHs(HomePageActivity.terms);
+                setHsEmail(HomePageActivity.sender);
+
                 if(message.length > result.length) {
-                    showNotif = true;
+                    Log.v("Will always hit", "Before the if statement");
+                    String emailContent = getTextFromMessage(message[message.length - 1]).trim();
+                    String[] emailWords = emailContent.split(" ");
+                    HashSet<String> emailWordsSet = new HashSet<>();
+                    for(String words : emailWords){
+                        emailWordsSet.add(words);
+                    }
+                    Log.v("words", String.valueOf(emailWordsSet));
+
+                    Address[] email = message[message.length - 1].getFrom();
+                    String finalEmail = email[0].toString();
+                    String[] splitList = finalEmail.split(" ");
+                    HashSet<String> emailSenderSet = new HashSet<>();
+                    for(String words : splitList){
+                        if(words.contains("@")){
+                            words = words.substring(1,words.length()-1);
+                            Log.v("Entering Sender", words);
+                        }
+                        emailSenderSet.add(words);
+                    }
+                    Log.v("Sender", String.valueOf(emailWordsSet));
+
+                    if(!Collections.disjoint(hs,emailWordsSet) || !Collections.disjoint(emailSenderSet, hsEmail)) {
+                        showNotif = true;
+                        Log.v("Entering desired condition", getTextFromMessage(message[message.length - 1]));
+                    }
                 }
                 else showNotif = false;
             }
@@ -217,7 +268,6 @@ public class Mail extends javax.mail.Authenticator {
             return true;
 
         } catch (Exception e) {
-            Log.e("MailApp", "Could not read email", e);
             return false;
         }
 
@@ -335,7 +385,14 @@ public class Mail extends javax.mail.Authenticator {
     public Message[] getData() {
         return this.result;
     }
+
     public boolean getShowNotif() {
         return showNotif;
+    }
+
+    public void printPopulated(HashSet<String> terms) {
+        Log.v("Local HashSet ", String.valueOf(hs));
+        setHs(terms);
+        Log.v("Global HashSet ", String.valueOf(hs));
     }
 }
