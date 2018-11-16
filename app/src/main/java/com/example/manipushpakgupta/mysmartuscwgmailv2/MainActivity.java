@@ -22,10 +22,15 @@ import android.content.SharedPreferences;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 
 import java.util.Collections;
+import java.util.HashMap;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -52,6 +57,8 @@ public final class MainActivity extends Activity {
 
     List<String> labelsList;
 
+    HashMap<String, Label> map = new HashMap<String, Label>();
+
     ArrayAdapter<String> adapter;
 
     com.google.api.services.gmail.Gmail service;
@@ -70,7 +77,7 @@ public final class MainActivity extends Activity {
         listView = (ListView) findViewById(R.id.list);
         // Google Accounts
         credential =
-                GoogleAccountCredential.usingOAuth2(this, Collections.singleton(GmailScopes.GMAIL_LABELS));
+                GoogleAccountCredential.usingOAuth2(this, Collections.singleton(GmailScopes.MAIL_GOOGLE_COM));
         SharedPreferences settings = getPreferences(Context.MODE_PRIVATE);
         credential.setSelectedAccountName(settings.getString(PREF_ACCOUNT_NAME, null));
         // Tasks client
@@ -91,8 +98,12 @@ public final class MainActivity extends Activity {
     }
 
     void refreshView() {
-        adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, labelsList);
-        listView.setAdapter(adapter);
+        if(labelsList != null) {
+            if(labelsList.size() > 0) {
+                adapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, labelsList);
+                listView.setAdapter(adapter);
+            }
+        }
     }
 
     @Override
@@ -174,12 +185,36 @@ public final class MainActivity extends Activity {
             chooseAccount();
         } else {
             // load calendars
-            AsyncLoadLabels.run(this);
+            //AsyncLoadLabels.run(this);
         }
     }
 
     private void chooseAccount() {
         startActivityForResult(credential.newChooseAccountIntent(), REQUEST_ACCOUNT_PICKER);
     }
+
+    public void keyWordButton(View v) {
+        EditText keyWord = findViewById(R.id.editKeyword);
+        final String keyText = keyWord.getText().toString();
+        Button newKeyWord = new Button(this);
+        newKeyWord.setText(keyText);
+
+        AsyncCreateLabel.run(this, keyText);
+
+        final MainActivity activity = this;
+
+        LinearLayout ll = (LinearLayout)findViewById(R.id.buttons);
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        ll.addView(newKeyWord, lp);
+
+        newKeyWord.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AsyncLoadLabelEmails.run(activity, keyText);
+                refreshView();
+            }
+        });
+    }
+
 
 }

@@ -33,6 +33,29 @@
             android:contentDescription="@string/title_separator_desc" />
     </LinearLayout>
 
+    <LinearLayout
+        android:id="@+id/buttons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/Theme">
+
+        <EditText
+            android:id="@+id/editKeyword"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Keyword" />
+
+        <Button
+            android:id="@+id/addKeyword"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:onClick="keyWordButton"
+            android:text="Add this keyword" />
+
+    </LinearLayout>
+
     <ListView
         android:id="@+id/list"
         android:layout_width="match_parent"
